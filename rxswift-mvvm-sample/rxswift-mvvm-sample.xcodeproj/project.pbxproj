@@ -16,6 +16,7 @@
 		864B28A5288A9B58008A9EDF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864B28A3288A9B58008A9EDF /* LaunchScreen.storyboard */; };
 		864B28B2288B9CA5008A9EDF /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 864B28B1288B9CA5008A9EDF /* Splash.storyboard */; };
 		864B28B5288B9D06008A9EDF /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864B28B4288B9D06008A9EDF /* SplashViewController.swift */; };
+		86D803F1288C325600A02274 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D803F0288C325600A02274 /* SplashViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		864B28A6288A9B58008A9EDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		864B28B1288B9CA5008A9EDF /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
 		864B28B4288B9D06008A9EDF /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		86D803F0288C325600A02274 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				864B28B1288B9CA5008A9EDF /* Splash.storyboard */,
 				864B28B4288B9D06008A9EDF /* SplashViewController.swift */,
+				86D803F0288C325600A02274 /* SplashViewModel.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86D803F1288C325600A02274 /* SplashViewModel.swift in Sources */,
 				864B289D288A9B56008A9EDF /* ViewController.swift in Sources */,
 				864B2899288A9B56008A9EDF /* AppDelegate.swift in Sources */,
 				864B289B288A9B56008A9EDF /* SceneDelegate.swift in Sources */,
