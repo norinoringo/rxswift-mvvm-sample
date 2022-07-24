@@ -13,5 +13,9 @@ class SplashViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("SplashView画面")
+
+        let nextStoryboard = UIStoryboard(name: "Top", bundle: nil)
+        let nextView = nextStoryboard.instantiateViewController(withIdentifier: "Top")
+        self.navigationController?.pushViewController(nextView, animated: true)
     }
 }
