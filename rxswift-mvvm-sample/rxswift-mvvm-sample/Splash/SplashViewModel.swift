@@ -9,5 +9,14 @@
 import Foundation
 
 class SplashViewModel {
-    
+    struct Input {}
+    struct Output{}
+
+    init(input:SplashViewModel.Input) {
+        transform(input: input)
+    }
+
+    func transform(input:Input) -> Output {
+        return Output()
+    }
 }
