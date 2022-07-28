@@ -8,4 +8,18 @@
 
 import Foundation
 
-class TopViewModel {}
+class TopViewModel {
+    struct Input {}
+
+    struct Output {}
+
+    struct CellData {
+        let functionName:String
+    }
+
+    init() {}
+
+    func transform(input:Input) -> Output {
+        return Output()
+    }
+}

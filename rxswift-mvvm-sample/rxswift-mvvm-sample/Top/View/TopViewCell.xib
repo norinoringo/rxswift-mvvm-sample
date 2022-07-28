@@ -11,35 +11,32 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="r3O-4Z-6Ju" customClass="TopViewCell" customModule="rxswift_mvvm_sample" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r3O-4Z-6Ju" id="fTG-F3-iav">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r3O-4Z-6Ju" id="fTG-F3-iav">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CWr-Qu-hWG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                        <rect key="frame" x="12" y="0.0" width="390" height="44"/>
                         <accessibility key="accessibilityConfiguration">
                             <bool key="isElement" value="NO"/>
                         </accessibility>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="40" id="YNR-ro-ZzY"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="CWr-Qu-hWG" firstAttribute="trailing" secondItem="fTG-F3-iav" secondAttribute="trailing" id="6HZ-kN-o1f"/>
+                    <constraint firstItem="CWr-Qu-hWG" firstAttribute="trailing" secondItem="fTG-F3-iav" secondAttribute="trailing" constant="-12" id="6HZ-kN-o1f"/>
                     <constraint firstItem="CWr-Qu-hWG" firstAttribute="bottom" secondItem="fTG-F3-iav" secondAttribute="bottom" id="b3J-V3-irV"/>
                     <constraint firstItem="CWr-Qu-hWG" firstAttribute="top" secondItem="fTG-F3-iav" secondAttribute="top" id="dsK-fP-Iuc"/>
-                    <constraint firstItem="CWr-Qu-hWG" firstAttribute="leading" secondItem="fTG-F3-iav" secondAttribute="leading" id="eAm-iD-8VX"/>
+                    <constraint firstItem="CWr-Qu-hWG" firstAttribute="leading" secondItem="fTG-F3-iav" secondAttribute="leading" constant="12" id="eAm-iD-8VX"/>
                 </constraints>
             </tableViewCellContentView>
             <accessibility key="accessibilityConfiguration">
                 <bool key="isElement" value="YES"/>
             </accessibility>
             <connections>
-                <outlet property="functionName" destination="CWr-Qu-hWG" id="4Nm-Pj-JgA"/>
+                <outlet property="functionNameLabel" destination="CWr-Qu-hWG" id="4Nm-Pj-JgA"/>
             </connections>
             <point key="canvasLocation" x="-163" y="-71"/>
         </tableViewCell>

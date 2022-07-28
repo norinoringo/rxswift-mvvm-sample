@@ -9,35 +9,44 @@
 import Foundation
 import UIKit
 
-class TopViewController:UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+class TopViewController:BaseViewController {
+    typealias ViewModel = TopViewModel
+    typealias TableData = ViewModel.CellData
 
-    let functionNameData:[String] = ["GitHub検索"]
+    @IBOutlet weak var tableView: UITableView!
+    
+    var tableData = [TableData(functionName: "GitHub検索")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initTableView()
+        configureTableView()
+        configureNavigationBar()
     }
 
-    private func initTableView() {
-        tableView.dataSource = self
+    private func configureTableView() {
         tableView.delegate = self
-        tableView.register(UINib(nibName: "TopViewCell", bundle: nil), forCellReuseIdentifier: "TopViewCell")
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "TopViewCell", bundle: nil),
+                           forCellReuseIdentifier: "TopViewCell")
+    }
+
+    private func configureNavigationBar() {
+        self.configureNavigationItem(title: "RxSwift×MVVMアプリ")
+        self.hideBackButton()
     }
 }
 
 extension TopViewController:UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return functionNameData.count
+        return tableData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TopViewCell", for: indexPath) as! TopViewCell
-        cell.functionName.text = functionNameData[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TopViewCell",
+                                                 for: indexPath) as! TopViewCell
+        cell.configure(cellData: tableData[indexPath.row])
         return cell
     }
-
-
 }
 
 extension TopViewController:UITableViewDelegate {
@@ -47,7 +56,7 @@ extension TopViewController:UITableViewDelegate {
 }
 
 extension TopViewController {
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
     }
 }

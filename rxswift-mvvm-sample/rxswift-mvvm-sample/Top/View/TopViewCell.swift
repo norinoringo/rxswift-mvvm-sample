@@ -10,10 +10,13 @@ import Foundation
 import UIKit
 
 class TopViewCell:UITableViewCell {
-    @IBOutlet weak var functionName: UILabel!
+    @IBOutlet weak var functionNameLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
+    func configure(cellData:TopViewModel.CellData) {
+        functionNameLabel.text = cellData.functionName
+    }
 }
