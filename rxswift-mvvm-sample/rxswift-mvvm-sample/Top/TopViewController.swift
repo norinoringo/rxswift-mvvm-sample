@@ -15,7 +15,7 @@ class TopViewController:BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var tableData = [TableData(functionName: "GitHub検索")]
+    var tableData = [TableData(functionName: "GitHubリポジトリ検索")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
