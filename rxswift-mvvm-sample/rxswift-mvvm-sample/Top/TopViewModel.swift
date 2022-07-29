@@ -15,11 +15,21 @@ class TopViewModel {
 
     struct CellData {
         let functionName:String
-    }
+        let cellType:CellTransisionType
 
+        init(functionName:String,cellType:CellTransisionType) {
+            self.functionName = functionName
+            self.cellType = cellType
+        }
+    }
+    
     init() {}
 
     func transform(input:Input) -> Output {
         return Output()
     }
+}
+
+enum CellTransisionType {
+    case serachRepository,searchHighRatedRepository
 }

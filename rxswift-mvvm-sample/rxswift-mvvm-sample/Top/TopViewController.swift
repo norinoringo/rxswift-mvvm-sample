@@ -15,8 +15,8 @@ class TopViewController:BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    let tableData = Observable<[TableData]>.just([TableData(functionName: "GitHubリポジトリ検索"),
-                                                  TableData(functionName: "GitHub人気リポジトリ表示")])
+    let tableData = Observable<[TableData]>.just([TableData(functionName: "GitHubリポジトリ検索", cellType: .serachRepository),
+                                                  TableData(functionName: "GitHub人気リポジトリ表示", cellType: .searchHighRatedRepository)])
 
     var disposeBag = DisposeBag()
 
@@ -40,6 +40,22 @@ class TopViewController:BaseViewController {
             })
             .disposed(by: disposeBag)
 
+        // TODO: 画面遷移
+        tableView.rx.modelSelected(TableData.self)
+            .subscribe(onNext: { cellData in
+                switch cellData.cellType {
+                case .serachRepository:
+                    print(cellData.cellType)
+                case .searchHighRatedRepository:
+                    print(cellData.cellType)
+                }
+            })
+            .disposed(by: disposeBag)
+
+        /*
+         RxSwiftでTableViewCellの高さを設定する
+         https://github.com/RxSwiftCommunity/RxDataSources/issues/124
+         */
         self.tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
