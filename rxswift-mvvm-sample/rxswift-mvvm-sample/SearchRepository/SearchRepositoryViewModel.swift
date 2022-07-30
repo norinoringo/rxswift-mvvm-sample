@@ -15,7 +15,6 @@ class SearchRepositoryViewModel {
     struct Output{}
 
     struct Data{
-        let iconImage:UIImage?
         let title:String?
         let distribution:String?
         let star:String?

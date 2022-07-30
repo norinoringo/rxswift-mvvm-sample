@@ -20,8 +20,7 @@ class SearchRepositoryViewController:BaseViewController {
 
     // let usecase:hogeUsecase!
 
-    let tableData = Observable<[TableData]>.just([TableData(iconImage: UIColor.red.image(size: .init(width: 50, height: 50)), title: "テストタイトル", distribution: "テスト説明", star: "1000", language: "Swift"),
-                                                  TableData(iconImage: UIColor.blue.image(size: .init(width: 50, height: 50)), title: "テストタイトル", distribution: "テスト説明", star: "1000", language: "Swift")])
+    let tableData = Observable<[TableData]>.just([TableData(title: "テストタイトル", distribution: "テスト説明", star: "1000", language: "Swift")])
 
     var disposeBag = DisposeBag()
 
