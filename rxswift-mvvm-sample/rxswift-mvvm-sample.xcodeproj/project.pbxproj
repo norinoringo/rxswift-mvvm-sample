@@ -19,7 +19,6 @@
 		86840A902894C84F001706CD /* RepositoryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86840A8F2894C84F001706CD /* RepositoryViewCell.xib */; };
 		86840A922894E20F001706CD /* SearchRepositoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86840A912894E20F001706CD /* SearchRepositoryViewController.swift */; };
 		86C0EC3F2894E4250052B85A /* SearchRepository.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86C0EC3E2894E4250052B85A /* SearchRepository.storyboard */; };
-		86C0EC422894FBA70052B85A /* UIColor+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0EC412894FBA70052B85A /* UIColor+UIImage.swift */; };
 		86C0EC4528953CB10052B85A /* SearchReositoryUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0EC4428953CB10052B85A /* SearchReositoryUseCase.swift */; };
 		86C0EC472895FFF50052B85A /* SearchRepositoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0EC462895FFF50052B85A /* SearchRepositoryResponse.swift */; };
 		86D803F1288C325600A02274 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86D803F0288C325600A02274 /* SplashViewModel.swift */; };
@@ -47,7 +46,6 @@
 		86840A8F2894C84F001706CD /* RepositoryViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RepositoryViewCell.xib; sourceTree = "<group>"; };
 		86840A912894E20F001706CD /* SearchRepositoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryViewController.swift; sourceTree = "<group>"; };
 		86C0EC3E2894E4250052B85A /* SearchRepository.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchRepository.storyboard; sourceTree = "<group>"; };
-		86C0EC412894FBA70052B85A /* UIColor+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+UIImage.swift"; sourceTree = "<group>"; };
 		86C0EC4428953CB10052B85A /* SearchReositoryUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReositoryUseCase.swift; sourceTree = "<group>"; };
 		86C0EC462895FFF50052B85A /* SearchRepositoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepositoryResponse.swift; sourceTree = "<group>"; };
 		86D803F0288C325600A02274 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 			children = (
 				864B28B0288B9C18008A9EDF /* AppManager */,
 				86840A82289203A9001706CD /* Base */,
-				86C0EC402894FB6A0052B85A /* Extensions */,
 				86C0EC48289621970052B85A /* Mock */,
 				86840A892894C630001706CD /* SearchRepository */,
 				864B28B3288B9CAE008A9EDF /* Splash */,
@@ -159,14 +156,6 @@
 				86840A8F2894C84F001706CD /* RepositoryViewCell.xib */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		86C0EC402894FB6A0052B85A /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				86C0EC412894FBA70052B85A /* UIColor+UIImage.swift */,
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		86C0EC48289621970052B85A /* Mock */ = {
@@ -330,7 +319,6 @@
 				86D803F6288D5BD200A02274 /* TopViewController.swift in Sources */,
 				86D803F1288C325600A02274 /* SplashViewModel.swift in Sources */,
 				86C0EC4528953CB10052B85A /* SearchReositoryUseCase.swift in Sources */,
-				86C0EC422894FBA70052B85A /* UIColor+UIImage.swift in Sources */,
 				864B2899288A9B56008A9EDF /* AppDelegate.swift in Sources */,
 				86D803F8288D5D0700A02274 /* TopViewModel.swift in Sources */,
 				86840A922894E20F001706CD /* SearchRepositoryViewController.swift in Sources */,
