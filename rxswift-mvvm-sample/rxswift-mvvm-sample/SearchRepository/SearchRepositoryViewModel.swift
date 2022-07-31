@@ -5,23 +5,26 @@
 //  Created by hisanori on 2022/07/30.
 //  
 
-
-import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SearchRepositoryViewModel {
-    struct Input{}
 
-    struct Output{}
+    init(usecase:FetchRepositoryProtocol = FetchRepositoryUseCase()) {
+        self.usecase = usecase
+    }
 
-    struct Data{
-        let title:String?
-        let distribution:String?
-        let star:String?
-        let language:String?
+    private let usecase: FetchRepositoryProtocol
+    
+    struct Input {}
+
+    struct Output {
+        let tableData:Driver<[SearchRepositoryResponseModel]>
     }
 
     func transform(input:Input) -> Output {
-        return Output()
+        let tableData = usecase.fetchRepository()
+        return Output(tableData: tableData)
     }
 }

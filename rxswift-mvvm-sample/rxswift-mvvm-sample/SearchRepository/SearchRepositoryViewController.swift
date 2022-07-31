@@ -13,14 +13,15 @@ import RxCocoa
 class SearchRepositoryViewController:BaseViewController {
 
     typealias ViewModel = SearchRepositoryViewModel
-    typealias TableData = SearchRepositoryViewModel.Data
+    typealias Input = ViewModel.Input
+    typealias Output = ViewModel.Output
 
     @IBOutlet weak var serchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
 
-    // let usecase:hogeUsecase!
+    let viewModel = ViewModel()
 
-    let tableData = Observable<[TableData]>.just([TableData(title: "テストタイトル", distribution: "テスト説明", star: "1000", language: "Swift")])
+    private var tableData = [SearchRepositoryResponseModel]()
 
     var disposeBag = DisposeBag()
 
@@ -32,25 +33,27 @@ class SearchRepositoryViewController:BaseViewController {
     }
 
     private func bind() {
-        tableData.bind(to: tableView.rx.items(cellIdentifier: "RepositoryViewCell",
-                                              cellType: RepositoryViewCell.self)) { row, element, cell in
-            cell.configure(data: element)
-        }.disposed(by: disposeBag)
+        let input = Input()
+        let output = viewModel.transform(input: input)
+
+        output.tableData
+            .drive(self.tableView.rx.items(cellIdentifier: "RepositoryViewCell",
+                                           cellType: RepositoryViewCell.self)) { row, element, cell in
+                cell.configure(data: element)
+            }.disposed(by: disposeBag)
 
         self.tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
     }
 
-    func configureView() {
-
-    }
+    func configureView() {}
 
     func configureTableView() {
         tableView.register(UINib(nibName: "RepositoryViewCell",
                                  bundle: nil),
                            forCellReuseIdentifier: "RepositoryViewCell")
     }
-
+    
     func configureNavigationView() {
         configureNavigationItem(title: "GitHubリポジトリ検索画面")
         showBackButton()

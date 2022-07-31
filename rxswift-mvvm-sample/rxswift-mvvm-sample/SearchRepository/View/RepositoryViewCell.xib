@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="J8h-CA-Q8N">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="INn-Yg-Lj2">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYf-DZ-Qmw" userLabel="Title Label">
@@ -24,7 +24,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfY-VW-ZQN" userLabel="Distibution Label">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfY-VW-ZQN" userLabel="Discription Label">
                                 <rect key="frame" x="0.0" y="22" width="35.5" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -40,14 +40,14 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="J8h-CA-Q8N" firstAttribute="leading" secondItem="Kys-jB-dPS" secondAttribute="leading" id="CtS-Fu-lXJ"/>
-                    <constraint firstItem="J8h-CA-Q8N" firstAttribute="top" secondItem="Kys-jB-dPS" secondAttribute="top" id="FHo-4c-fA9"/>
-                    <constraint firstAttribute="trailing" secondItem="J8h-CA-Q8N" secondAttribute="trailing" id="Wl9-V1-tbZ"/>
-                    <constraint firstAttribute="bottom" secondItem="J8h-CA-Q8N" secondAttribute="bottom" id="wCb-R1-TfY"/>
+                    <constraint firstItem="INn-Yg-Lj2" firstAttribute="top" secondItem="Kys-jB-dPS" secondAttribute="top" id="1iJ-KD-Rkx"/>
+                    <constraint firstItem="INn-Yg-Lj2" firstAttribute="leading" secondItem="Kys-jB-dPS" secondAttribute="leading" id="gj6-sH-laV"/>
+                    <constraint firstAttribute="trailing" secondItem="INn-Yg-Lj2" secondAttribute="trailing" id="tU7-eh-Ypk"/>
+                    <constraint firstAttribute="bottom" secondItem="INn-Yg-Lj2" secondAttribute="bottom" id="ugj-s3-0bG"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="distributionLabel" destination="vfY-VW-ZQN" id="pvs-hq-4VC"/>
+                <outlet property="discriptionLabel" destination="vfY-VW-ZQN" id="pvs-hq-4VC"/>
                 <outlet property="repositoryTitleLabel" destination="VYf-DZ-Qmw" id="aGe-C3-JRs"/>
                 <outlet property="starLabel" destination="6Uz-xp-idE" id="edN-yr-guo"/>
             </connections>
