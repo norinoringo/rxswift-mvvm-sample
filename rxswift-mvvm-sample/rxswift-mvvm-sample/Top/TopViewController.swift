@@ -46,6 +46,9 @@ class TopViewController:BaseViewController {
                 switch cellData.cellType {
                 case .serachRepository:
                     print(cellData.cellType)
+                    let nextStoryboard = UIStoryboard(name: "SearchRepository", bundle: nil)
+                    let nextView = nextStoryboard.instantiateViewController(withIdentifier: "SearchRepository")
+                    self.navigationController?.pushViewController(nextView, animated: true)
                 case .searchHighRatedRepository:
                     print(cellData.cellType)
                 }

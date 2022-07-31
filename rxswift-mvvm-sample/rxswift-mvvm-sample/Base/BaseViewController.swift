@@ -11,6 +11,11 @@ import UIKit
 
 class BaseViewController:UIViewController {
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        showBackButton()
+    }
+
     // UINavigationBarにタイトルを表示する
     func configureNavigationItem(title:String) {
         self.navigationItem.title = title
@@ -23,5 +28,6 @@ class BaseViewController:UIViewController {
     // UINavigationControllerの戻るボタンを表示する
     func showBackButton() {
         self.navigationItem.hidesBackButton = false
+        self.navigationItem.backButtonTitle = "戻る"
     }
 }
