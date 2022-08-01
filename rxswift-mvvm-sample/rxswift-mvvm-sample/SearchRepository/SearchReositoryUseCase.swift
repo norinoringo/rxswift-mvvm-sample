@@ -16,11 +16,7 @@ protocol FetchRepositoryProtocol {
 
 class FetchRepositoryUseCase:FetchRepositoryProtocol {
 
-    private let tableDataRelay = BehaviorRelay<[SearchRepositoryResponseModel]>(value: [SearchRepositoryResponseModel(name: "swift",
-                                                                                                                       url: "https://github.com/apple/swift",
-                                                                                                                       description: "The Swift Programming Language",
-                                                                                                                       stargazersCount: 60206,
-                                                                                                                       language: "C+")])
+    private let tableDataRelay = BehaviorRelay<[SearchRepositoryResponseModel]>(value: MockSearchRepositoryResponseModel().mockResponse)
 
     func fetchRepository() -> Driver<[SearchRepositoryResponseModel]> {
         return tableDataRelay.asDriver()

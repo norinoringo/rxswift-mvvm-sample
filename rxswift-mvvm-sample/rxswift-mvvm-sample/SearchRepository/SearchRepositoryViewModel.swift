@@ -11,7 +11,7 @@ import RxCocoa
 
 class SearchRepositoryViewModel {
 
-    init(usecase:FetchRepositoryProtocol = FetchRepositoryUseCase()) {
+    init(usecase: FetchRepositoryProtocol = FetchRepositoryUseCase()) {
         self.usecase = usecase
     }
 
@@ -20,7 +20,7 @@ class SearchRepositoryViewModel {
     struct Input {}
 
     struct Output {
-        let tableData:Driver<[SearchRepositoryResponseModel]>
+        let tableData: Driver<[SearchRepositoryResponseModel]>
     }
 
     func transform(input:Input) -> Output {
