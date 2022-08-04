@@ -11,14 +11,14 @@ import RxSwift
 import RxCocoa
 
 protocol FetchRepositoryProtocol {
-    func fetchRepository() -> Driver<[SearchRepositoryResponseModel]>
+    func fetchRepository(keyword: String?) -> Driver<[SearchRepositoryResponseModel]>
 }
 
 class FetchRepositoryUseCase:FetchRepositoryProtocol {
 
     private let tableDataRelay = BehaviorRelay<[SearchRepositoryResponseModel]>(value: MockSearchRepositoryResponseModel().mockResponse)
 
-    func fetchRepository() -> Driver<[SearchRepositoryResponseModel]> {
+    func fetchRepository(keyword: String?) -> Driver<[SearchRepositoryResponseModel]> {
         return tableDataRelay.asDriver()
     }
 }
