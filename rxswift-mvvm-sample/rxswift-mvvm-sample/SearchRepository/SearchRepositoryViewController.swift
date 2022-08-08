@@ -21,7 +21,11 @@ class SearchRepositoryViewController:BaseViewController {
 
     let viewModel = ViewModel()
 
+    let isLoading = BehaviorRelay<Bool>(value: true)
+
     private var tableData = [SearchRepositoryResponseModel]()
+
+    var indicator = UIActivityIndicatorView()
 
     var disposeBag = DisposeBag()
 
@@ -29,6 +33,7 @@ class SearchRepositoryViewController:BaseViewController {
         super.viewDidLoad()
         configureTableView()
         configureNavigationView()
+        configureIndicatorView()
         bind()
     }
 
@@ -41,8 +46,11 @@ class SearchRepositoryViewController:BaseViewController {
 
         let tapCell = self.tableView.rx.modelSelected(SearchRepositoryResponseModel.self).asDriver()
 
+        let isLoading = self.isLoading.asDriver()
+
         let input = Input(searchKeyword: searchKeyword,
-                          tapCell: tapCell)
+                          tapCell: tapCell,
+                          isLoading: isLoading)
 
         let output = viewModel.transform(input: input)
 
@@ -58,27 +66,43 @@ class SearchRepositoryViewController:BaseViewController {
                 let url = URL(string: url!)
                 UIApplication.shared.open(url!)
             }).disposed(by:disposeBag)
+
+        output.isLoading
+            .drive(onNext: { isloading in
+                if isloading {
+                    self.indicator.startAnimating()
+                } else {
+                    self.indicator.stopAnimating()
+                }
+            }).disposed(by: disposeBag)
     }
 
-        func configureView() {}
+    private func configureView() {}
 
-        func configureTableView() {
-            tableView.register(UINib(nibName: "RepositoryViewCell",
-                                     bundle: nil),
-                               forCellReuseIdentifier: "RepositoryViewCell")
+    private func configureTableView() {
+        tableView.register(UINib(nibName: "RepositoryViewCell",
+                                 bundle: nil),
+                           forCellReuseIdentifier: "RepositoryViewCell")
 
-            self.tableView.rx.setDelegate(self)
-                .disposed(by: disposeBag)
-        }
-
-        func configureNavigationView() {
-            configureNavigationItem(title: "GitHubリポジトリ検索画面")
-            showBackButton()
-        }
+        self.tableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
     }
 
-    extension SearchRepositoryViewController:UITableViewDelegate {
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 66
-        }
+    private func configureNavigationView() {
+        configureNavigationItem(title: "GitHubリポジトリ検索画面")
+        showBackButton()
     }
+
+    private func configureIndicatorView() {
+        indicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        indicator.style = .medium
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+    }
+}
+
+extension SearchRepositoryViewController:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 66
+    }
+}
