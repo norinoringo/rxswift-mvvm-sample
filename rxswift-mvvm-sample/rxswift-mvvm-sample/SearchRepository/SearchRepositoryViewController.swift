@@ -34,7 +34,11 @@ class SearchRepositoryViewController:BaseViewController {
 
     private func bind() {
 
-        let searchKeyword = self.saerchBar.rx.text.asDriver()
+        let searchKeyword = self.saerchBar.rx.text.orEmpty
+            .throttle(.milliseconds(300), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+            .asDriver(onErrorJustReturn: "")
+
         let tapCell = self.tableView.rx.modelSelected(SearchRepositoryResponseModel.self).asDriver()
 
         let input = Input(searchKeyword: searchKeyword,

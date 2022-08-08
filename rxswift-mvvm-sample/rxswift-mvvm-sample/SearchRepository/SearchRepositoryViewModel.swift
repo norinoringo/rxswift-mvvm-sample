@@ -18,13 +18,15 @@ class SearchRepositoryViewModel {
     }
 
     struct Input {
-        let searchKeyword: Driver<String?>
+        let searchKeyword: Driver<String>
         let tapCell: Driver<SearchRepositoryResponseModel>
+        let isLoading: Driver<Bool>
     }
 
     struct Output {
         let response: Driver<[SearchRepositoryResponseModel]>
         let openURL: Driver<String?>
+        let isLoading: Driver<Bool>
     }
 
     func transform(input:Input) -> Output {
@@ -40,7 +42,11 @@ class SearchRepositoryViewModel {
                 return model.url
             }).asDriver(onErrorJustReturn: "")
 
+        let isLoading = input.isLoading
+            .asDriver(onErrorJustReturn: false)
+
         return Output(response: response,
-                      openURL: openURL)
+                      openURL: openURL,
+                      isLoading: isLoading)
     }
 }
