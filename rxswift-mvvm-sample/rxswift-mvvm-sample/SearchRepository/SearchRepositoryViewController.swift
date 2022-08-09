@@ -23,7 +23,7 @@ class SearchRepositoryViewController:BaseViewController {
 
     let isLoading = BehaviorRelay<Bool>(value: true)
 
-    private var tableData = [SearchRepositoryResponseModel]()
+    private var tableData = [GitHubRepositoryItems]()
 
     var indicator = UIActivityIndicatorView()
 
@@ -44,7 +44,7 @@ class SearchRepositoryViewController:BaseViewController {
             .distinctUntilChanged()
             .asDriver(onErrorJustReturn: "")
 
-        let tapCell = self.tableView.rx.modelSelected(SearchRepositoryResponseModel.self).asDriver()
+        let tapCell = self.tableView.rx.modelSelected(GitHubRepositoryItems.self).asDriver()
 
         let isLoading = self.isLoading.asDriver()
 

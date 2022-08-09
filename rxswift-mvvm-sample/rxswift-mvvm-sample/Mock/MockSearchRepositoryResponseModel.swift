@@ -9,18 +9,18 @@
 import Foundation
 
 class MockSearchRepositoryResponseModel {
-    var mockResponse: [SearchRepositoryResponseModel] {
-        return [SearchRepositoryResponseModel(name: "swift",
+    var mockResponse: [GitHubRepositoryItems] {
+        return [GitHubRepositoryItems(name: "swift",
                                               url: "https://github.com/apple/swift",
                                               description: "The Swift Programming Language",
                                               stargazersCount: 60206,
                                               language: "C++"),
-                SearchRepositoryResponseModel(name: "swift",
+                GitHubRepositoryItems(name: "swift",
                                               url: "https://github.com/apple/swift",
                                               description: "The Swift Programming Language",
                                               stargazersCount: 60206,
                                               language: "C++"),
-                SearchRepositoryResponseModel(name: "swift",
+                GitHubRepositoryItems(name: "swift",
                                               url: "https://github.com/apple/swift",
                                               description: "The Swift Programming Language",
                                               stargazersCount: 60206,

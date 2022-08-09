@@ -19,12 +19,12 @@ class SearchRepositoryViewModel {
 
     struct Input {
         let searchKeyword: Driver<String>
-        let tapCell: Driver<SearchRepositoryResponseModel>
+        let tapCell: Driver<GitHubRepositoryItems>
         let isLoading: Driver<Bool>
     }
 
     struct Output {
-        let response: Driver<[SearchRepositoryResponseModel]>
+        let response: Driver<[GitHubRepositoryItems]>
         let openURL: Driver<String?>
         let isLoading: Driver<Bool>
     }
