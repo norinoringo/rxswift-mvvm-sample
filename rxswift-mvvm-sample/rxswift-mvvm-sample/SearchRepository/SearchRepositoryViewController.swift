@@ -21,8 +21,6 @@ class SearchRepositoryViewController:BaseViewController {
 
     let viewModel = ViewModel()
 
-    let isLoading = BehaviorRelay<Bool>(value: true)
-
     private var tableData = [GitHubRepositoryItems]()
 
     var indicator = UIActivityIndicatorView()
@@ -46,11 +44,8 @@ class SearchRepositoryViewController:BaseViewController {
 
         let tapCell = self.tableView.rx.modelSelected(GitHubRepositoryItems.self).asDriver()
 
-        let isLoading = self.isLoading.asDriver()
-
         let input = Input(searchKeyword: searchKeyword,
-                          tapCell: tapCell,
-                          isLoading: isLoading)
+                          tapCell: tapCell)
 
         let output = viewModel.transform(input: input)
 
@@ -69,11 +64,7 @@ class SearchRepositoryViewController:BaseViewController {
 
         output.isLoading
             .drive(onNext: { isloading in
-                if isloading {
-                    self.indicator.startAnimating()
-                } else {
-                    self.indicator.stopAnimating()
-                }
+                isloading ? self.indicator.startAnimating() : self.indicator.stopAnimating()
             }).disposed(by: disposeBag)
     }
 
