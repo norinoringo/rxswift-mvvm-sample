@@ -15,7 +15,7 @@ class RepositoryViewCell:UITableViewCell {
     @IBOutlet weak var discriptionLabel: UILabel!
     @IBOutlet weak var starLabel: UILabel!
 
-    func configure(data:SearchRepositoryResponseModel) {
+    func configure(data:GitHubRepositoryItems) {
         repositoryTitleLabel.text = data.name ?? "未公開"
         discriptionLabel.text = data.description ?? "未公開"
         starLabel.text = "★:\(String(describing: data.stargazersCount))" + "\u{00A0}" + "Language:\(data.language ?? "未公開")"

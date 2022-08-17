@@ -19,34 +19,37 @@ class SearchRepositoryViewModel {
 
     struct Input {
         let searchKeyword: Driver<String>
-        let tapCell: Driver<SearchRepositoryResponseModel>
-        let isLoading: Driver<Bool>
+        let tapCell: Driver<GitHubRepositoryItems>
     }
 
     struct Output {
-        let response: Driver<[SearchRepositoryResponseModel]>
+        let response: Driver<[GitHubRepositoryItems]>
         let openURL: Driver<String?>
         let isLoading: Driver<Bool>
     }
 
     func transform(input:Input) -> Output {
 
+        let isLoading = PublishRelay<Bool>()
+
         let response = input.searchKeyword
-            .map({ keyword in
+            .do(onNext: { _ in
+                isLoading.accept(true)
+            }).flatMap({ keyword in
                 self.usecase.fetchRepository(keyword: keyword)
+            }).do(onNext: { _ in
+                // TODO: usecaseの非同期処理の完了を待ってからisLoading.accept(false)を流したい
+                isLoading.accept(false)
             })
-            .merge() // .mapして.merge = flatMap
-        
+
         let openURL = input.tapCell
             .map({ model in
                 return model.url
             }).asDriver(onErrorJustReturn: "")
 
-        let isLoading = input.isLoading
-            .asDriver(onErrorJustReturn: false)
 
         return Output(response: response,
                       openURL: openURL,
-                      isLoading: isLoading)
+                      isLoading: isLoading.asDriver(onErrorJustReturn: false))
     }
 }
