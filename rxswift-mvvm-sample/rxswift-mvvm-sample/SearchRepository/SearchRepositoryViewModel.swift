@@ -11,20 +11,45 @@ import RxCocoa
 
 class SearchRepositoryViewModel {
 
-    init(usecase:FetchRepositoryProtocol = FetchRepositoryUseCase()) {
+    private let usecase: FetchRepositoryProtocol
+
+    init(usecase: FetchRepositoryProtocol = FetchRepositoryUseCase()) {
         self.usecase = usecase
     }
 
-    private let usecase: FetchRepositoryProtocol
-    
-    struct Input {}
+    struct Input {
+        let searchKeyword: Driver<String>
+        let tapCell: Driver<GitHubRepositoryItems>
+    }
 
     struct Output {
-        let tableData:Driver<[SearchRepositoryResponseModel]>
+        let response: Driver<[GitHubRepositoryItems]>
+        let openURL: Driver<String?>
+        let isLoading: Driver<Bool>
     }
 
     func transform(input:Input) -> Output {
-        let tableData = usecase.fetchRepository()
-        return Output(tableData: tableData)
+
+        let isLoading = PublishRelay<Bool>()
+
+        let response = input.searchKeyword
+            .do(onNext: { _ in
+                isLoading.accept(true)
+            }).flatMap({ keyword in
+                self.usecase.fetchRepository(keyword: keyword)
+            }).do(onNext: { _ in
+                // TODO: usecaseの非同期処理の完了を待ってからisLoading.accept(false)を流したい
+                isLoading.accept(false)
+            })
+
+        let openURL = input.tapCell
+            .map({ model in
+                return model.url
+            }).asDriver(onErrorJustReturn: "")
+
+
+        return Output(response: response,
+                      openURL: openURL,
+                      isLoading: isLoading.asDriver(onErrorJustReturn: false))
     }
 }
