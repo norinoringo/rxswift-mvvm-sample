@@ -37,9 +37,6 @@ class SearchRepositoryViewModel {
                 isLoading.accept(true)
             }).flatMap({ keyword in
                 self.usecase.fetchRepository(keyword: keyword)
-            }).do(onNext: { _ in
-                // TODO: usecaseの非同期処理の完了を待ってからisLoading.accept(false)を流したい
-                isLoading.accept(false)
             })
 
         let openURL = input.tapCell
