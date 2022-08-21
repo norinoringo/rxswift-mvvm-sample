@@ -53,6 +53,7 @@ class SearchRepositoryViewController:BaseViewController {
             .drive(self.tableView.rx.items(cellIdentifier: "RepositoryViewCell",
                                            cellType: RepositoryViewCell.self)) { row, element, cell in
                 cell.configure(data: element)
+                self.stopIndicator()
             }.disposed(by: disposeBag)
 
 
@@ -67,8 +68,6 @@ class SearchRepositoryViewController:BaseViewController {
                 isloading ? self.indicator.startAnimating() : self.indicator.stopAnimating()
             }).disposed(by: disposeBag)
     }
-
-    private func configureView() {}
 
     private func configureTableView() {
         tableView.register(UINib(nibName: "RepositoryViewCell",
@@ -89,6 +88,10 @@ class SearchRepositoryViewController:BaseViewController {
         indicator.style = .medium
         indicator.center = self.view.center
         self.view.addSubview(indicator)
+    }
+
+    private func stopIndicator() {
+        self.indicator.stopAnimating()
     }
 }
 
