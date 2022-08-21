@@ -69,8 +69,6 @@ class SearchRepositoryViewController:BaseViewController {
             }).disposed(by: disposeBag)
     }
 
-    private func configureView() {}
-
     private func configureTableView() {
         tableView.register(UINib(nibName: "RepositoryViewCell",
                                  bundle: nil),
